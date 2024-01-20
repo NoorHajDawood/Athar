@@ -1,5 +1,192 @@
 // This file contains placeholder data that you'll be replacing with real data in the Data Fetching chapter:
 // https://nextjs.org/learn/dashboard-app/fetching-data
+
+const announcements = [
+  {
+    id: '1',
+    title: 'Lorem Ipsum',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    date: '2022-12-01',
+  },
+  {
+    id: '2',
+    title: 'Dolor Sit Amet',
+    description: 'Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    date: '2022-11-15',
+  },
+  {
+    id: '3',
+    title: 'Consectetur Adipiscing',
+    description: 'Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    date: '2022-10-30',
+  },
+  {
+    id: '4',
+    title: 'Eiusmod Tempor',
+    description: 'Eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    date: '2022-09-15',
+  },
+];
+
+const facilitators = [
+  {
+    "id": "65aad1fde599b2e3b92bf94d",
+    "email": "haya_jbareen@imageflow.vacations",
+    "name": "Haya Jbareen",
+    "image_url": "/facilitator_default.png",
+    "workshops": []
+  },
+  {
+    "id": "65aad1fde8c4710865327a44",
+    "email": "miranda_mcintosh@xanide.hm",
+    "name": "Delaney Campos",
+    "image_url": "/person.png",
+    "workshops": []
+  },
+  {
+    "id": "65aad1fde0809fabcd5511c2",
+    "email": "rosales_wood@zilphur.bi",
+    "name": "Sloan Summers",
+    "image_url": "/person.png",
+    "workshops": []
+  },
+  {
+    "id": "65aad1fdf36bc73d7a243b49",
+    "email": "schneider_bean@wazzu.kg",
+    "name": "Sara Richard",
+    "image_url": "/person.png",
+    "workshops": []
+  },
+  {
+    "id": "65aad1fdf7847926a0e2b92f",
+    "email": "andrews_ward@intergeek.kn",
+    "name": "Dolly Golden",
+    "image_url": "/person.png",
+    "workshops": []
+  },
+  {
+    "id": "65aad1fd7a6b5871c8177351",
+    "email": "margaret_adkins@orbixtar.bh",
+    "name": "Kathy Ochoa",
+    "image_url": "/person.png",
+    "workshops": []
+  },
+  {
+    "id": "65aad1fdda91c5eb39c7bf5d",
+    "email": "ida_cannon@medifax.cartier",
+    "name": "Haley Leblanc",
+    "image_url": "/person.png",
+    "workshops": []
+  },
+  {
+    "id": "65aad1fd646d8fd71556d7cb",
+    "email": "juliet_sosa@telequiet.android",
+    "name": "Best Cummings",
+    "image_url": "/person.png",
+    "workshops": []
+  }
+];
+
+const workshops = [
+  {
+    "id": "65aad1fd3f9e5c8b6f3c0d1a",
+    "title": "جنون العلوم 7",
+    "breif": 'تجارب جديدة ومختلفة بانتظاركم بلقائنا السابع من سلسلة "جنون العلوم" 💥',
+    "description": `الأغراض اللازمة*:
+    3 أكواب شفافة
+    - الوان مأئية
+    - مناديل ورقية
+    - برطمان صغير الحجم
+    - زيت نباتي
+    - طبق بلاستيك
+    - شوكة
+    - الوان مائية
+    - كأس زجاج ( مج ماء)
+    - ماء
+    -رغوة حلاقة ( ممكن اختيار نوع رغوة اخرى)
+    - ملون طعام ازرق
+    قطارة لوضع الملون فيها
+    - مكعبي ثلج (صغير الحجم)
+    - خيط
+    - كأس بلاستيك من الماء
+    - ملح
+    - صحن بلاستيك`,
+    "intendedAudience": "5 سنوات فما فوق",
+    "facilitators": [
+      facilitators[0]
+    ],
+    "image_url": "/workshops/science_craze_7.png",
+    "date": "13.1.2024",
+    "time": "18:00",
+    "duration": 60,
+    "location": "Online",
+    "participants": []
+  },
+  {
+    "id": "65aad1fd3f9e5c8b6f3c0d1b",
+    "title": "Workshop 2",
+    "breif": "This is the breif for Workshop 2. It will cover various topics.",
+    "description": "This is the description for Workshop 2. It will cover various topics.",
+    "facilitators": [
+      facilitators[1],
+      facilitators[4]
+    ],
+    "image_url": "/workshops/workshops_default.png",
+    "date": "2022-12-02",
+    "time": "11:00 AM",
+    "duration": 90,
+    "location": "Online",
+    "participants": []
+  },
+  {
+    "id": "65aad1fd3f9e5c8b6f3c0d1c",
+    "title": "Workshop 3",
+    "breif": "This is the breif for Workshop 3. It will cover various topics.",
+    "description": "This is the description for Workshop 3. It will cover various topics.",
+    "facilitators": [
+      facilitators[2]
+    ],
+    "image_url": "/workshops/workshops_default.png",
+    "date": "2022-12-03",
+    "time": "12:00 PM",
+    "duration": 120,
+    "location": "Online",
+    "participants": []
+  },
+  {
+    "id": "65aad1fd3f9e5c8b6f3c0d1d",
+    "title": "Workshop 4",
+    "breif": "This is the breif for Workshop 4. It will cover various topics.",
+    "description": "This is the description for Workshop 4. It will cover various topics.",
+    "facilitators": [
+      facilitators[3],
+      facilitators[6],
+      facilitators[7]
+    ],
+    "image_url": "/workshops/workshops_default.png",
+    "date": "2022-12-04",
+    "time": "01:00 PM",
+    "duration": 60,
+    "location": "Online",
+    "participants": []
+  }
+];
+
+const acknowledgements = [
+  {
+    name: 'ميرنا منصور سمعان',
+    acknowledgement: 'شكراً',
+    description: 'لكونك تركتِ أثراً',
+    image_url: '/acknowledgements/merna-mansour.png',
+  },
+  {
+    name: 'إباء أبو طه',
+    acknowledgement: 'شكراً',
+    description: 'لكونك تركتِ أثراً',
+    image_url: '/acknowledgements/eba2_abo_6aha.png',
+  },
+];
+
 const users = [
   {
     id: '410544b2-4001-4271-9855-fec4b6a6442a',
@@ -181,8 +368,12 @@ const revenue = [
 ];
 
 module.exports = {
+  announcements,
   users,
   customers,
   invoices,
   revenue,
+  facilitators,
+  workshops,
+  acknowledgements,
 };

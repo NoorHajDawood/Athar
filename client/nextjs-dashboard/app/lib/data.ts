@@ -1,14 +1,50 @@
+import { acknowledgements, announcements, customers, facilitators, invoices, revenue, workshops } from '@/app/lib/placeholder-data';
 import { sql } from '@vercel/postgres';
 import {
+  Acknowledgement,
+  Announcement,
   CustomerField,
   CustomersTableType,
   InvoiceForm,
   InvoicesTable,
   LatestInvoiceRaw,
-  User,
   Revenue,
+  User,
+  Workshop
 } from './definitions';
 import { formatCurrency } from './utils';
+
+export async function fetchAcknowledgements() {
+  try {
+    const data: Acknowledgement[] = acknowledgements;
+
+    return data;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch acknowledgements.');
+  }
+}
+
+export async function fetchAnnouncements() {
+  try {
+    const data: Announcement[] = announcements;
+
+    return data;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch announcements.');
+  }
+}
+
+export async function fetchWorkshops() {
+  try {
+    const data: Workshop[] = workshops;
+    return data;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch workshops.');
+  }
+}
 
 export async function fetchRevenue() {
   // Add noStore() here to prevent the response from being cached.
@@ -21,31 +57,49 @@ export async function fetchRevenue() {
     // console.log('Fetching revenue data...');
     // await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    const data = await sql<Revenue>`SELECT * FROM revenue`;
+    // const data = await sql<Revenue>`SELECT * FROM revenue`;
+    const data = revenue;
 
     // console.log('Data fetch completed after 3 seconds.');
 
-    return data.rows;
+    // return data.rows;
+    return data;
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch revenue data.');
   }
 }
 
+function getCustomerById(id: string) {
+  return customers.find((customer) => customer.id === id);
+}
+
 export async function fetchLatestInvoices() {
   try {
-    const data = await sql<LatestInvoiceRaw>`
-      SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
-      FROM invoices
-      JOIN customers ON invoices.customer_id = customers.id
-      ORDER BY invoices.date DESC
-      LIMIT 5`;
+    // const data = await sql<LatestInvoiceRaw>`
+    //   SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
+    //   FROM invoices
+    //   JOIN customers ON invoices.customer_id = customers.id
+    //   ORDER BY invoices.date DESC
+    //   LIMIT 5`;
+    const data = invoices.map((invoice, index) => {
+      const customer = getCustomerById(invoice.customer_id);
 
-    const latestInvoices = data.rows.map((invoice) => ({
-      ...invoice,
-      amount: formatCurrency(invoice.amount),
-    }));
-    return latestInvoices;
+      return {
+        amount: formatCurrency(invoice.amount),
+        name: customer!.name,
+        image_url: customer!.image_url,
+        email: customer!.email,
+        id: index.toString()
+      }
+    });
+
+    // const latestInvoices = data.rows.map((invoice) => ({
+    //   ...invoice,
+    //   amount: formatCurrency(invoice.amount),
+    // }));
+    // return latestInvoices;
+    return data;
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch the latest invoices.');

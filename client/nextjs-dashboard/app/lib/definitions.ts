@@ -2,6 +2,48 @@
 // It describes the shape of the data, and what data type each property should accept.
 // For simplicity of teaching, we're manually defining these types.
 // However, these types are generated automatically if you're using an ORM such as Prisma.
+export type Announcement = {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+};
+
+export type Faciliator = {
+  id: string;
+  name: string;
+  email: string;
+  image_url: string;
+  workshops: string[];
+};
+
+export type Participant = {
+  name: string;
+  email: string;
+  phoneNumber: string;
+}
+
+export type Acknowledgement = {
+  name: string,
+  acknowledgement: string,
+  description: string,
+  image_url: string,
+}
+
+export type Workshop = {
+  id: string;
+  title: string;
+  breif: string;
+  description: string;
+  date: string;
+  time: string;
+  intendedAudience?: string;
+  location: string;
+  facilitators: Faciliator[];
+  image_url: string;
+  participants: Participant[];
+};
+
 export type User = {
   id: string;
   name: string;

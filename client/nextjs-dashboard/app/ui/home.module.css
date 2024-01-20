@@ -1,7 +1,48 @@
-.shape {
-  height: 0;
-  width: 0;
-  border-bottom: 30px solid black;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* flex min-h-screen flex-col p-6 */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* height that is good for pc and good for phone */
+  height: auto;
+  width: 100%;
+  padding: 4px;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: #dea8ad;
+  border-bottom: 1px solid #dee2e6;
+  font-size: 20px;
+  color: #495057;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  align-items: center;
+  /* height that is good for pc and good for phone */
+  height: auto;
+  width: 100%;
+  margin: 20px;
+  font-size: 20px;
+  color: #495057;
+}
+
+.nav a {
+  padding: 5px;
+  border-radius: 5px;
+  border-bottom: 2px solid #495057;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  border-color: #e9ecef;
 }
